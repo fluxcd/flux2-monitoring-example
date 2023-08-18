@@ -3,7 +3,7 @@ kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
 spec:
-  interval: 5m
+  interval: 1h
   chart:
     spec:
       version: "48.x"
@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-      interval: 60m
+      interval: 1h
   install:
     crds: Create
   upgrade:
@@ -33,6 +33,7 @@ spec:
             app.kubernetes.io/component: monitoring
     grafana:
       defaultDashboardsEnabled: false
+      adminPassword: flux
     kube-state-metrics:
       collectors: []
       extraArgs:

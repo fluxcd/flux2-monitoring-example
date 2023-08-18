@@ -33,6 +33,7 @@ spec:
             app.kubernetes.io/component: monitoring
     grafana:
       defaultDashboardsEnabled: false
+      adminPassword: flux
     kube-state-metrics:
       collectors: []
       extraArgs:

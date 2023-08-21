@@ -32,7 +32,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -561,6 +561,8 @@
               "Value": true,
               "__name__": true,
               "app": true,
+              "chart_name": true,
+              "chart_source_name": true,
               "container": true,
               "customresource_group": true,
               "customresource_kind": false,
@@ -575,7 +577,9 @@
               "namespace": true,
               "pod": true,
               "pod_template_hash": true,
+              "revision": true,
               "service": true,
+              "source_name": true,
               "status": true,
               "type": true
             },
@@ -761,9 +765,11 @@
               "pod": true,
               "pod_template_hash": true,
               "ready": false,
+              "revision": true,
               "service": true,
               "status": true,
-              "type": true
+              "type": true,
+              "url": true
             },
             "indexByName": {
               "Time": 0,

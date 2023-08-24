@@ -750,6 +750,7 @@
               "Value": true,
               "__name__": true,
               "app": true,
+              "bucket_name": true,
               "container": true,
               "customresource_group": true,
               "customresource_kind": false,

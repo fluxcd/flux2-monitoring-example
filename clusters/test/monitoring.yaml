@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: monitoring-controllers
+  name: monitoring-example-pre-requisites
   namespace: flux-system
 spec:
   interval: 1h
@@ -13,19 +13,37 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./monitoring/controllers
+  path: ./monitoring/pre-requisites/
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: monitoring-configs
+  name: monitoring-example
   namespace: flux-system
 spec:
   dependsOn:
-    - name: monitoring-controllers
+    - name: monitoring-example-pre-requisites
   interval: 1h
   retryInterval: 2m
-  timeout: 5m
+  timeout: 10m
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./monitoring/controllers/
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: monitoring-example-config
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: monitoring-example
+  interval: 1h
+  retryInterval: 2m
+  timeout: 10m
   prune: true
   wait: true
   sourceRef:

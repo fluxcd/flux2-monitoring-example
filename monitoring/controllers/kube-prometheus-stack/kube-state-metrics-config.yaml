@@ -46,6 +46,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   revision: [ status, lastAppliedRevision ]
                   source_name: [ spec, sourceRef, name ]
@@ -65,6 +66,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   revision: [ status, lastAppliedRevision ]
                   chart_name: [ spec, chart, spec, chart ]
@@ -85,6 +87,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   revision: [ status, artifact, revision ]
                   url: [ spec, url ]
@@ -104,6 +107,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   revision: [ status, artifact, revision ]
                   endpoint: [ spec, endpoint ]
@@ -124,6 +128,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   revision: [ status, artifact, revision ]
                   url: [ spec, url ]
@@ -143,6 +148,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   revision: [ status, artifact, revision ]
                   chart_name: [ spec, chart ]
@@ -163,6 +169,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   revision: [ status, artifact, revision ]
                   url: [ spec, url ]
@@ -182,6 +189,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
           - groupVersionKind:
               group: notification.toolkit.fluxcd.io
@@ -199,6 +207,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
           - groupVersionKind:
               group: notification.toolkit.fluxcd.io
@@ -216,6 +225,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   webhook_path: [ status, webhookPath ]
           - groupVersionKind:
@@ -234,6 +244,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   image: [ spec, image ]
           - groupVersionKind:
@@ -252,6 +263,7 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   source_name: [ spec, imageRepositoryRef, name ]
           - groupVersionKind:
@@ -270,5 +282,6 @@ kube-state-metrics:
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
+                  status: [ status, conditions, "[type=Ready]", reason ]
                   suspended: [ spec, suspend ]
                   source_name: [ spec, sourceRef, name ]

@@ -581,6 +581,7 @@
               "service": true,
               "source_name": true,
               "status": true,
+              "suspended": true,
               "type": true
             },
             "indexByName": {
@@ -769,6 +770,7 @@
               "revision": true,
               "service": true,
               "status": true,
+              "suspended": true,
               "type": true,
               "url": true
             },

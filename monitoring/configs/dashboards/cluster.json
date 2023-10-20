@@ -510,7 +510,7 @@
         ]
       },
       "gridPos": {
-        "h": 11,
+        "h": 22,
         "w": 12,
         "x": 0,
         "y": 10
@@ -807,13 +807,173 @@
       "type": "table"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "string"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "basic",
+                  "type": "color-background"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "id": 36,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Namespace"
+          }
+        ]
+      },
+      "pluginVersion": "10.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "gotk_resource_info{exported_namespace=~\"$namespace\", suspended=\"true\"}",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Suspended Objects",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": false,
+              "Value": false,
+              "__name__": false,
+              "app": false,
+              "bucket_name": false,
+              "container": false,
+              "customresource_group": false,
+              "customresource_kind": false,
+              "customresource_version": false,
+              "endpoint": false,
+              "exported_namespace": false,
+              "gotk_type": false,
+              "instance": false,
+              "job": false,
+              "kubernetes_namespace": false,
+              "kubernetes_pod_name": false,
+              "namespace": false,
+              "pod": false,
+              "pod_template_hash": false,
+              "ready": false,
+              "revision": false,
+              "service": false,
+              "source_name": false,
+              "status": false,
+              "suspended": false,
+              "type": false,
+              "url": false
+            },
+            "indexByName": {
+              "Time": 0,
+              "Value": 15,
+              "__name__": 1,
+              "container": 2,
+              "customresource_group": 5,
+              "customresource_kind": 6,
+              "customresource_version": 7,
+              "endpoint": 8,
+              "exported_namespace": 4,
+              "instance": 9,
+              "job": 10,
+              "name": 11,
+              "namespace": 3,
+              "pod": 12,
+              "ready": 13,
+              "service": 14
+            },
+            "renameByName": {
+              "customresource_kind": "Kind",
+              "exported_namespace": "Namespace",
+              "name": "Name"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "pattern": "(Namespace|Name|Kind)"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
       "collapsed": false,
       "datasource": "${DS_PROMETHEUS}",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 32
       },
       "id": 17,
       "panels": [],
@@ -921,7 +1081,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 33
       },
       "id": 27,
       "options": {
@@ -1053,7 +1213,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 41
       },
       "id": 35,
       "options": {

@@ -557,29 +557,29 @@
           "id": "organize",
           "options": {
             "excludeByName": {
-              "Time": true,
-              "Value": true,
-              "__name__": true,
+              "Time": false,
+              "Value": false,
+              "__name__": false,
               "app": true,
-              "chart_name": true,
-              "chart_source_name": true,
-              "container": true,
-              "customresource_group": true,
+              "chart_name": false,
+              "chart_source_name": false,
+              "container": false,
+              "customresource_group": false,
               "customresource_kind": false,
-              "customresource_version": true,
-              "endpoint": true,
+              "customresource_version": false,
+              "endpoint": false,
               "exported_namespace": false,
               "gotk_type": true,
-              "instance": true,
-              "job": true,
+              "instance": false,
+              "job": false,
               "kubernetes_namespace": true,
               "kubernetes_pod_name": true,
-              "namespace": true,
-              "pod": true,
+              "namespace": false,
+              "pod": false,
               "pod_template_hash": true,
-              "revision": true,
-              "service": true,
-              "source_name": true,
+              "revision": false,
+              "service": false,
+              "source_name": false,
               "status": true,
               "suspended": true,
               "type": true
@@ -610,6 +610,14 @@
               "name": "Name",
               "namespace": "Operator Namespace",
               "ready": "Status"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "pattern": "(Namespace|Kind|Name|Status)"
             }
           }
         }
@@ -747,32 +755,32 @@
           "id": "organize",
           "options": {
             "excludeByName": {
-              "Time": true,
-              "Value": true,
-              "__name__": true,
+              "Time": false,
+              "Value": false,
+              "__name__": false,
               "app": true,
               "bucket_name": true,
-              "container": true,
-              "customresource_group": true,
+              "container": false,
+              "customresource_group": false,
               "customresource_kind": false,
-              "customresource_version": true,
-              "endpoint": true,
+              "customresource_version": false,
+              "endpoint": false,
               "exported_namespace": false,
               "gotk_type": true,
-              "instance": true,
-              "job": true,
+              "instance": false,
+              "job": false,
               "kubernetes_namespace": true,
               "kubernetes_pod_name": true,
-              "namespace": true,
-              "pod": true,
+              "namespace": false,
+              "pod": false,
               "pod_template_hash": true,
               "ready": false,
-              "revision": true,
-              "service": true,
+              "revision": false,
+              "service": false,
               "status": true,
               "suspended": true,
               "type": true,
-              "url": true
+              "url": false
             },
             "indexByName": {
               "Time": 0,
@@ -800,6 +808,14 @@
               "name": "Name",
               "namespace": "Operator Namespace",
               "ready": "Status"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "pattern": "(Namespace|Kind|Name|Status)"
             }
           }
         }

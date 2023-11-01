@@ -557,32 +557,32 @@
           "id": "organize",
           "options": {
             "excludeByName": {
-              "Time": true,
-              "Value": true,
-              "__name__": true,
-              "app": true,
-              "chart_name": true,
-              "chart_source_name": true,
-              "container": true,
-              "customresource_group": true,
+              "Time": false,
+              "Value": false,
+              "__name__": false,
+              "app": false,
+              "chart_name": false,
+              "chart_source_name": false,
+              "container": false,
+              "customresource_group": false,
               "customresource_kind": false,
-              "customresource_version": true,
-              "endpoint": true,
+              "customresource_version": false,
+              "endpoint": false,
               "exported_namespace": false,
-              "gotk_type": true,
-              "instance": true,
-              "job": true,
-              "kubernetes_namespace": true,
-              "kubernetes_pod_name": true,
-              "namespace": true,
-              "pod": true,
-              "pod_template_hash": true,
-              "revision": true,
-              "service": true,
-              "source_name": true,
-              "status": true,
-              "suspended": true,
-              "type": true
+              "gotk_type": false,
+              "instance": false,
+              "job": false,
+              "kubernetes_namespace": false,
+              "kubernetes_pod_name": false,
+              "namespace": false,
+              "pod": false,
+              "pod_template_hash": false,
+              "revision": false,
+              "service": false,
+              "source_name": false,
+              "status": false,
+              "suspended": false,
+              "type": false
             },
             "indexByName": {
               "Time": 0,
@@ -610,6 +610,14 @@
               "name": "Name",
               "namespace": "Operator Namespace",
               "ready": "Status"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "pattern": "(Namespace|Kind|Name|Status)"
             }
           }
         }
@@ -747,32 +755,32 @@
           "id": "organize",
           "options": {
             "excludeByName": {
-              "Time": true,
-              "Value": true,
-              "__name__": true,
-              "app": true,
-              "bucket_name": true,
-              "container": true,
-              "customresource_group": true,
+              "Time": false,
+              "Value": false,
+              "__name__": false,
+              "app": false,
+              "bucket_name": false,
+              "container": false,
+              "customresource_group": false,
               "customresource_kind": false,
-              "customresource_version": true,
-              "endpoint": true,
+              "customresource_version": false,
+              "endpoint": false,
               "exported_namespace": false,
-              "gotk_type": true,
-              "instance": true,
-              "job": true,
-              "kubernetes_namespace": true,
-              "kubernetes_pod_name": true,
-              "namespace": true,
-              "pod": true,
-              "pod_template_hash": true,
+              "gotk_type": false,
+              "instance": false,
+              "job": false,
+              "kubernetes_namespace": false,
+              "kubernetes_pod_name": false,
+              "namespace": false,
+              "pod": false,
+              "pod_template_hash": false,
               "ready": false,
-              "revision": true,
-              "service": true,
-              "status": true,
-              "suspended": true,
-              "type": true,
-              "url": true
+              "revision": false,
+              "service": false,
+              "status": false,
+              "suspended": false,
+              "type": false,
+              "url": false
             },
             "indexByName": {
               "Time": 0,
@@ -800,6 +808,14 @@
               "name": "Name",
               "namespace": "Operator Namespace",
               "ready": "Status"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "pattern": "(Namespace|Kind|Name|Status)"
             }
           }
         }

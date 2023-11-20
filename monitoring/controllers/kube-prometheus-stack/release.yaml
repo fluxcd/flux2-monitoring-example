@@ -6,7 +6,8 @@ spec:
   interval: 1h
   chart:
     spec:
-      version: "48.x"
+      #version: "48.x"
+      version: "54.x"
       chart: kube-prometheus-stack
       sourceRef:
         kind: HelmRepository
@@ -26,6 +27,9 @@ spec:
       enabled: false
     prometheus:
       prometheusSpec:
+        logLevel: debug
+        enableFeatures:
+          - native-histograms
         retention: 24h
         resources:
           requests:

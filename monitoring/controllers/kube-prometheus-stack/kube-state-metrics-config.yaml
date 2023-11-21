@@ -40,7 +40,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -59,7 +59,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -79,7 +79,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -98,7 +98,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -118,7 +118,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -137,7 +137,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -157,7 +157,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -176,7 +176,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -193,7 +193,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -210,7 +210,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -228,7 +228,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -246,7 +246,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]
@@ -264,7 +264,7 @@ kube-state-metrics:
               - name: "resource_info"
                 help: "The current state of a GitOps Toolkit resource."
                 each:
-                  type: Info
+                  type: Gauge
                   info:
                     labelsFromPath:
                       name: [ metadata, name ]

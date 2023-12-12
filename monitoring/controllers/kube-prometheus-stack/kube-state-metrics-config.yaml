@@ -171,7 +171,7 @@ kube-state-metrics:
                   url: [ spec, url ]
           - groupVersionKind:
               group: notification.toolkit.fluxcd.io
-              version: v1beta2
+              version: v1beta3
               kind: Alert
             metricNamePrefix: gotk
             metrics:
@@ -184,11 +184,10 @@ kube-state-metrics:
                       name: [ metadata, name ]
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
-                  ready: [ status, conditions, "[type=Ready]", status ]
                   suspended: [ spec, suspend ]
           - groupVersionKind:
               group: notification.toolkit.fluxcd.io
-              version: v1beta2
+              version: v1beta3
               kind: Provider
             metricNamePrefix: gotk
             metrics:
@@ -201,7 +200,6 @@ kube-state-metrics:
                       name: [ metadata, name ]
                 labelsFromPath:
                   exported_namespace: [ metadata, namespace ]
-                  ready: [ status, conditions, "[type=Ready]", status ]
                   suspended: [ spec, suspend ]
           - groupVersionKind:
               group: notification.toolkit.fluxcd.io

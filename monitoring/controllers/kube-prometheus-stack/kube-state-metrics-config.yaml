@@ -1,7 +1,5 @@
 kube-state-metrics:
-  # For kube-prometheus-stacks that are already installed and configured with
-  # custom collectors, commenting out the collectors and extraArgs below will
-  # retain any existing kube-state-metrics configuration.
+kub
   collectors: [ ]
   extraArgs:
     - --custom-resource-state-only=true
@@ -35,7 +33,7 @@ kube-state-metrics:
         resources:
           - groupVersionKind:
               group: kustomize.toolkit.fluxcd.io
-              version: v1
+              version: v1beta2
               kind: Kustomization
             metricNamePrefix: gotk
             metrics:

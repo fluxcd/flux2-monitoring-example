@@ -1,5 +1,4 @@
 kube-state-metrics:
-kub
   collectors: [ ]
   extraArgs:
     - --custom-resource-state-only=true

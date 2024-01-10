@@ -1,0 +1,82 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: loki
+spec:
+  interval: 5m
+  dependsOn:
+    - name: kube-prometheus-stack
+  chart:
+    spec:
+      version: "5.x"
+      chart: loki
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+      interval: 60m
+  # https://github.com/grafana/loki/blob/main/production/helm/loki/values.yaml
+  values:
+    loki:
+      auth_enabled: false
+      serviceMonitor:
+        enabled: true
+        labels:
+          app.kubernetes.io/part-of: kube-prometheus-stack
+      commonConfig:
+        replication_factor: 1
+      storage:
+        type: 'filesystem'
+      chunk_store_config:
+        max_look_back_period: 24h
+      # Configure compactor
+      compactor:
+        shared_store: filesystem
+        compaction_interval: 10m
+        delete_request_cancel_period: 10m
+        retention_enabled: true
+        retention_delete_delay: 2h
+        retention_delete_worker_count: 150
+      limits_config:
+        retention_period: 24h
+    gateway:
+      enabled: true
+    singleBinary:
+      replicas: 1
+    # Monitoring section determines which monitoring features to enable
+    monitoring:
+      # Dashboards for monitoring Loki
+      dashboards:
+        # -- If enabled, create configmap with dashboards for monitoring Loki
+        enabled: false
+      selfMonitoring:
+        enabled: false
+        grafanaAgent:
+          installOperator: false
+      # The Loki canary pushes logs to and queries from this loki installation
+      # to test that it's working correctly
+      lokiCanary:
+        enabled: false
+    # -- Section for configuring optional Helm test
+    test:
+      enabled: false
+    extraObjects:
+      - apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: loki-datasource
+          labels:
+            app: loki
+            chart: loki
+            release: loki
+            grafana_datasource: "1"
+            app.kubernetes.io/part-of: kube-prometheus-stack
+        data:
+          loki-datasource.yaml: |-
+            apiVersion: 1
+            datasources:
+            - name: Loki
+              type: loki
+              access: proxy
+              url: http://loki:{{ .Values.loki.server.http_listen_port }}
+              version: 1
+              isDefault: false

@@ -69,8 +69,10 @@ kube-state-metrics:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
                   suspended: [ spec, suspend ]
-                  revision: [ status, lastAppliedRevision ]
-                  chart_name: [ spec, chart, spec, chart ]
+                  revision: [ status, history, "0", chartVersion ]
+                  chart_name: [ status, history, "0", chartName ]
+                  chart_app_version: [ status, history, "0", appVersion ]
+                  chart_ref_name: [ spec, chartRef, name ]
                   chart_source_name: [ spec, chart, spec, sourceRef, name ]
           - groupVersionKind:
               group: source.toolkit.fluxcd.io

@@ -1,8 +1,12 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+kind: OCIRepository
 metadata:
-  name: prometheus-community
+  name: kube-prometheus-stack
 spec:
-  interval: 12h
-  type: oci
-  url: oci://ghcr.io/prometheus-community/charts
+  interval: 1h
+  url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
+  ref:
+    semver: "58.x"
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy

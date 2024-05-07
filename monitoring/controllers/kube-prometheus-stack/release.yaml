@@ -1,17 +1,12 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
 spec:
   interval: 1h
-  chart:
-    spec:
-      version: "58.x"
-      chart: kube-prometheus-stack
-      sourceRef:
-        kind: HelmRepository
-        name: prometheus-community
-      interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack
   install:
     crds: Create
   upgrade:

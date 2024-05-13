@@ -259,7 +259,7 @@ kube-state-metrics:
                   source_name: [ spec, imageRepositoryRef, name ]
           - groupVersionKind:
               group: image.toolkit.fluxcd.io
-              version: v1beta1
+              version: v1beta2
               kind: ImageUpdateAutomation
             metricNamePrefix: gotk
             metrics:

@@ -54,7 +54,7 @@ kube-state-metrics:
                   source_name: [ spec, sourceRef, name ]
           - groupVersionKind:
               group: helm.toolkit.fluxcd.io
-              version: v2beta2
+              version: v2
               kind: HelmRelease
             metricNamePrefix: gotk
             metrics:
@@ -69,8 +69,10 @@ kube-state-metrics:
                   exported_namespace: [ metadata, namespace ]
                   ready: [ status, conditions, "[type=Ready]", status ]
                   suspended: [ spec, suspend ]
-                  revision: [ status, lastAppliedRevision ]
-                  chart_name: [ spec, chart, spec, chart ]
+                  revision: [ status, history, "0", chartVersion ]
+                  chart_name: [ status, history, "0", chartName ]
+                  chart_app_version: [ status, history, "0", appVersion ]
+                  chart_ref_name: [ spec, chartRef, name ]
                   chart_source_name: [ spec, chart, spec, sourceRef, name ]
           - groupVersionKind:
               group: source.toolkit.fluxcd.io
@@ -113,7 +115,7 @@ kube-state-metrics:
                   bucket_name: [ spec, bucketName ]
           - groupVersionKind:
               group: source.toolkit.fluxcd.io
-              version: v1beta2
+              version: v1
               kind: HelmRepository
             metricNamePrefix: gotk
             metrics:
@@ -132,7 +134,7 @@ kube-state-metrics:
                   url: [ spec, url ]
           - groupVersionKind:
               group: source.toolkit.fluxcd.io
-              version: v1beta2
+              version: v1
               kind: HelmChart
             metricNamePrefix: gotk
             metrics:

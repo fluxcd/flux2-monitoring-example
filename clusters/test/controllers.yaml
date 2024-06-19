@@ -53,8 +53,6 @@ metadata:
   name: external-dns
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: sealed-secrets
   interval: 1h
   retryInterval: 2m
   timeout: 5m

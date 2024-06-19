@@ -3,7 +3,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: ingress-nginx
-  namespace: ingress-nginx
+  namespace: flux-system
 spec:
   interval: 1h
   retryInterval: 2m
@@ -19,7 +19,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: cert-manager
-  namespace: cert-manager
+  namespace: flux-system
 spec:
   interval: 1h
   retryInterval: 2m
@@ -35,7 +35,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: sealed-secrets
-  namespace: sealed-secrets
+  namespace: flux-system
 spec:
   interval: 1h
   retryInterval: 2m
@@ -51,7 +51,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: external-dns
-  namespace: external-dns
+  namespace: flux-system
 spec:
   dependsOn:
     - name: sealed-secrets/sealed-secrets

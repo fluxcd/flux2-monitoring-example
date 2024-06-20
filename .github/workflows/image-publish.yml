@@ -30,4 +30,4 @@ jobs:
           context: ./apps/flatris
           file: ./apps/flatris/Dockerfile
           push: true
-          tags: cr.yandex/crphfsouuac0msuh3935/flatris:${{ env.IMAGE_TAG }}
+          tags: [ cr.yandex/crphfsouuac0msuh3935/flatris:${{ env.IMAGE_TAG }}, cr.yandex/crphfsouuac0msuh3935/flatris:latest ]

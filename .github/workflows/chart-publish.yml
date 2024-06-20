@@ -5,44 +5,32 @@ on:
     branches: [ "helm-chart-update" ]
 
 env:
-  CR_REGISTRY: crpsb911gv7utbg93o6t
-  CR_REPO: flatris-chart
-  CHART_NAME: flatris
-  IMAGE_TAG: 0.1.0
-  REGISTRY_URL: cr.yandex/crpsb911gv7utbg93o6t/flatris-chart
+  HELM_VERSION_TO_INSTALL: 3.8.0 # version of HEL to install
+  GCR_IMAGE: ghcr.io/${{ github.repository_owner }}/flatris
 
 jobs:
   build:
+    name: publish gcr
     runs-on: ubuntu-latest
-
+    environment: prod
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-      - name: Login to Yandex Cloud Container Registry
-        id: login-cr
-        uses: yc-actions/yc-cr-login@v2
+      - name: Install helm
+        uses: Azure/setup-helm@v1
         with:
-          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+          # Version of helm
+          version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
 
-      - name: Push Helm chart to OCI compatible registry (YCR)
+      - name: Login to gcr using helm
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{ env.GCR_IMAGE }} --username ${{ github.repository_owner }} --password-stdin
 
-      - uses: actions/checkout
-      - name: Helm lint
+      - name: Save helm chart to local registry
         run: |
-          helm lint ./charts/flatris
-      - name: Helm package
-        run: |
-          helm package ./charts/flatris --version $IMAGE_TAG
-      - name: Helm push
-        if: ${{ github.event_name == 'push' }}
-        run: |
-          helm push $CHART_NAME-$IMAGE_TAG.tgz ${{ env.REGISTRY_URL }}
+          helm chart save ${{ github.workspace }}/src/azure-vote-helm-chart/ ${{ env.GCR_IMAGE }}:${{ github.sha }}
 
-        #uses: bsord/helm-push@4.1.0
-        #with:
-        #  useOCIRegistry: true
-        #  registry-url: ${{ env.REGISTRY_URL }}
-        #  access-token: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
-        #  force: true
-        #  chart-folder: ./charts/flatris
+      - name: Publish chart to gcr
+        run: |
+          helm chart push ${{ env.GCR_IMAGE }}:${{ github.sha }}

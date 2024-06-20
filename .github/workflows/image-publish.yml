@@ -27,9 +27,6 @@ jobs:
           CR_REGISTRY: crphfsouuac0msuh3935
           CR_REPO: diploma-test-app
           IMAGE_TAG: ${{ github.sha }}
-        with:
-          context: ./apps/flatris
-          file: ./apps/flatris/Dockerfile
         run: |
-          docker build -t cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG .
+          docker build -f ./apps/flatris/Dockerfile -t cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG
           docker push cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG

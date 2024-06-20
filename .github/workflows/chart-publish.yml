@@ -1,12 +1,13 @@
-name: Publish Helm Chart to YCR
+name: Publish Helm Chart to GCR
 
 on:
   push:
     branches: [ "helm-chart-update" ]
 
 env:
-  HELM_VERSION_TO_INSTALL: 3.8.0 # version of HEL to install
+  #HELM_VERSION_TO_INSTALL: 3.8.0 # version of HEL to install
   GCR_IMAGE: ghcr.io/${{ github.repository_owner }}/flatris
+  CHART_VERSION: 0.1.0
 
 jobs:
   build:
@@ -19,9 +20,9 @@ jobs:
 
       - name: Install helm
         uses: Azure/setup-helm@v1
-        with:
+        #with:
           # Version of helm
-          version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
+          #version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
 
       - name: Login to gcr using helm
         run: |
@@ -29,8 +30,9 @@ jobs:
 
       - name: Save helm chart to local registry
         run: |
-          helm save ${{ github.workspace }}/src/azure-vote-helm-chart/ ${{ env.GCR_IMAGE }}:${{ github.sha }}
+          helm package ./charts/flatris --version $CHART_VERSION
 
       - name: Publish chart to gcr
         run: |
-          helm push ${{ env.GCR_IMAGE }}:${{ github.sha }}
+          helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_IMAGE }}:$CHART_VERSION
+          helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_IMAGE }}:latest

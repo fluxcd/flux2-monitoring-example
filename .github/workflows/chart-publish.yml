@@ -7,7 +7,8 @@ on:
 env:
   CR_REGISTRY: crpsb911gv7utbg93o6t
   CR_REPO: flatris-chart
-  IMAGE_TAG: ${{ github.sha }}
+  CHART_NAME: flatris
+  IMAGE_TAG: 0.1.0
   REGISTRY_URL: cr.yandex/crpsb911gv7utbg93o6t/flatris-chart
 
 jobs:
@@ -24,11 +25,24 @@ jobs:
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
 
-      - name: Push Helm chart to OCI compatible registry (Github)
-        uses: bsord/helm-push@4.1.0
-        with:
-          useOCIRegistry: true
-          registry-url: ${{ env.REGISTRY_URL }}
-          access-token: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
-          force: true
-          chart-folder: ./charts/flatris
+      - name: Push Helm chart to OCI compatible registry (YCR)
+
+      - uses: actions/checkout
+      - name: Helm lint
+        run: |
+          helm lint ./charts/flatris
+      - name: Helm package
+        run: |
+          helm package ./charts/flatris --version $IMAGE_TAG
+      - name: Helm push
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          helm push $CHART_NAME-$IMAGE_TAG.tgz ${{ env.REGISTRY_URL }}
+
+        #uses: bsord/helm-push@4.1.0
+        #with:
+        #  useOCIRegistry: true
+        #  registry-url: ${{ env.REGISTRY_URL }}
+        #  access-token: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+        #  force: true
+        #  chart-folder: ./charts/flatris

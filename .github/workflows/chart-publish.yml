@@ -6,7 +6,7 @@ on:
 
 env:
   #HELM_VERSION_TO_INSTALL: 3.8.0 # version of HEL to install
-  GCR_IMAGE: ghcr.io/${{ github.repository_owner }}/flatris
+  GCR_PATH: oci://ghcr.io/${{ github.repository_owner }}/flatris
   CHART_VERSION: 0.1.0
 
 jobs:
@@ -18,15 +18,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Install helm
-        uses: Azure/setup-helm@v1
+#      - name: Install helm
+#        uses: Azure/setup-helm@v1
         #with:
           # Version of helm
           #version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
 
       - name: Login to gcr using helm
         run: |
-          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{ env.GCR_IMAGE }} --username ${{ github.repository_owner }} --password-stdin
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io -u $ --password-stdin
 
       - name: Save helm chart to local registry
         run: |
@@ -34,5 +34,5 @@ jobs:
 
       - name: Publish chart to gcr
         run: |
-          helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_IMAGE }}:$CHART_VERSION
-          helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_IMAGE }}:latest
+          helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_PATH }}:$CHART_VERSION
+          helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_PATH }}:latest

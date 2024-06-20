@@ -29,8 +29,8 @@ jobs:
 
       - name: Save helm chart to local registry
         run: |
-          helm chart save ${{ github.workspace }}/src/azure-vote-helm-chart/ ${{ env.GCR_IMAGE }}:${{ github.sha }}
+          helm save ${{ github.workspace }}/src/azure-vote-helm-chart/ ${{ env.GCR_IMAGE }}:${{ github.sha }}
 
       - name: Publish chart to gcr
         run: |
-          helm chart push ${{ env.GCR_IMAGE }}:${{ github.sha }}
+          helm push ${{ env.GCR_IMAGE }}:${{ github.sha }}

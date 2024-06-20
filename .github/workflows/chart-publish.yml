@@ -8,7 +8,7 @@ env:
   CR_REGISTRY: crpsb911gv7utbg93o6t
   CR_REPO: flatris-chart
   IMAGE_TAG: ${{ github.sha }}
-  REGISTRY_URL: cr.yandex/${{ env.CR_REGISTRY }}/${{ env.CR_REPO }}
+  REGISTRY_URL: cr.yandex/crpsb911gv7utbg93o6t/flatris-chart
 
 jobs:
   build:

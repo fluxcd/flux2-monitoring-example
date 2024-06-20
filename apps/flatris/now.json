@@ -1,0 +1,6 @@
+{
+  "regions": ["bru"],
+  "env": {
+    "FIREBASE_SERVICE_ACCOUNT": "@firebase-service-account"
+  }
+}

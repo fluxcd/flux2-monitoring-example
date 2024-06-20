@@ -1,0 +1,34 @@
+name: Publish Helm Chart to YCR
+
+on:
+  push:
+    branches: [ "helm-chart-update" ]
+
+env:
+  CR_REGISTRY: crpsb911gv7utbg93o6t
+  CR_REPO: flatris-chart
+  IMAGE_TAG: ${{ github.sha }}
+  REGISTRY_URL: cr.yandex/${{ env.CR_REGISTRY }}/${{ env.CR_REPO }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to Yandex Cloud Container Registry
+        id: login-cr
+        uses: yc-actions/yc-cr-login@v2
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+
+      - name: Push Helm chart to OCI compatible registry (Github)
+        uses: bsord/helm-push@4.2.0
+        with:
+          useOCIRegistry: true
+          registry-url: ${{ env.REGISTRY_URL }}
+          access-token: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+          force: true
+          chart-folder: ./charts/flatris

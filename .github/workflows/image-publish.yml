@@ -22,12 +22,12 @@ jobs:
 
       - name: Build, tag, and push image to Yandex Cloud Container Registry
         env:
-          CR_REGISTRY: crphfsouuac0msuh3935
-          CR_REPO: diploma-test-app
+          CR_REGISTRY: crpsb911gv7utbg93o6t
+          CR_REPO: flatris
           IMAGE_TAG: ${{ github.sha }}
         uses: docker/build-push-action@v6
         with:
           context: ./apps/flatris
           file: ./apps/flatris/Dockerfile
           push: true
-          tags: cr.yandex/crphfsouuac0msuh3935/flatris:${{ env.IMAGE_TAG }}, cr.yandex/crphfsouuac0msuh3935/flatris:latest
+          tags: cr.yandex/${{ env.CR_REGISTRY }}/${{ env.CR_REPO }}:${{ env.IMAGE_TAG }}, cr.yandex/${{ env.CR_REGISTRY }}/${{ env.CR_REPO }}:latest

@@ -26,11 +26,11 @@ jobs:
         env:
           CR_REGISTRY: crphfsouuac0msuh3935
           CR_REPO: diploma-test-app
-          IMAGE_TAG: cr.yandex/${{ env.CR_REGISTRY }}/${{ env.CR_REPO }}:${{ github.sha }}
-        uses: docker/build-push-action@v3
+          IMAGE_TAG: ${{ github.sha }}
+        #uses: docker/build-push-action@v3
         with:
           context: ./apps/flatris
           file: ./apps/flatris/Dockerfile
-          push: true
-          #build-args: SERVER_URL=cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG
-          tags: ${{ env.IMAGE_TAG }}
+        run: |
+          docker build -t cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG .
+          docker push cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG

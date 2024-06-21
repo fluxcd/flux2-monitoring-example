@@ -5,7 +5,7 @@ on:
     branches: [ "helm-chart-update-docker" ]
 
 env:
-  REGISTRY_PATH: oci://registry-1.docker.io/${{ secret.DH_USER }}/flatris
+  REGISTRY_PATH: oci://registry-1.docker.io/${{ secrets.DH_USER }}/flatris
   CHART_VERSION: 0.1.0
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
 
       - name: Login to DockerHub using Helm
         run: |
-          echo ${{ secrets.DH_TOKEN }} | helm registry login registry-1.docker.io -u ${{ secret.DH_USER }} --password-stdin
+          echo ${{ secrets.DH_TOKEN }} | helm registry login registry-1.docker.io -u ${{ secrets.DH_USER }} --password-stdin
 
       - name: Save helm chart locally
         run: |

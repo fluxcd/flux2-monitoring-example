@@ -2,13 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-issuer
-  namespace: flux-system
+  name: flatris
+  namespace: flatris
 spec:
   dependsOn:
-    - name: cert-manager
-    - name: sealed-secrets
-    - name: external-dns
+    - name: cluster-issuer
   interval: 1h
   retryInterval: 2m
   timeout: 10m
@@ -17,4 +15,20 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/issuers
+  path: ./deploy-apps/flatris
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/rewrite-target: /
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: flatris.tasenko.ru
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: letsencrypt-prod
+          hosts:
+            - flatris.tasenko.ru

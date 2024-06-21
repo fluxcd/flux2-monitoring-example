@@ -48,8 +48,8 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-prod
         tls:
           - hosts:
-            - grafana.tasenko.ru
+            - monitoring.tasenko.ru
             secretName: letsencrypt-prod
         hosts:
-          - grafana.tasenko.ru
+          - monitoring.tasenko.ru
         path: /

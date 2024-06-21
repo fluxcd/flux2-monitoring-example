@@ -16,19 +16,3 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./deploy-apps/flatris
-  values:
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/rewrite-target: /
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-      hosts:
-        - host: flatris.tasenko.ru
-          paths:
-            - path: /
-              pathType: ImplementationSpecific
-      tls:
-        - secretName: letsencrypt-prod
-          hosts:
-            - flatris.tasenko.ru

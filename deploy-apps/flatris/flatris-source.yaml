@@ -4,5 +4,5 @@ metadata:
   name: flatris
   namespace: flatris
 spec:
-  interval: 24h
+  interval: 5m
   url: oci://registry-1.docker.io/fenixad/flatris

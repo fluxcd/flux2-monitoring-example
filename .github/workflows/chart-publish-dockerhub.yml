@@ -5,7 +5,7 @@ on:
     branches: [ "helm-chart-update-docker" ]
 
 env:
-  REGISTRY_PATH: oci://registry-1.docker.io/${{ secrets.DH_USER }}/flatris
+  REGISTRY_PATH: oci://registry-1.docker.io/${{ secrets.DH_USER }}
   CHART_VERSION: 0.1.0
 
 jobs:

@@ -3,7 +3,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: flatris
-  namespace: flatris
+  namespace: flux-system
 spec:
   dependsOn:
     - name: cluster-issuer

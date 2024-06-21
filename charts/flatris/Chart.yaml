@@ -1,0 +1,6 @@
+apiVersion: v2
+name: flatris
+description: Web game for two players
+type: application
+version: 0.2.0
+appVersion: "latest"

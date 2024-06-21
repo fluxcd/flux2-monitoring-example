@@ -1,0 +1,29 @@
+name: Publish Helm Chart to GCR
+
+on:
+  push:
+    branches: [ "helm-chart-update" ]
+
+env:
+  GCR_PATH: oci://ghcr.io/${{ github.repository_owner }}/flatris
+  CHART_VERSION: 0.2.0
+
+jobs:
+  build:
+    name: publish gcr
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Login to gcr using helm
+        run: |
+          echo ${{ secrets.GCR_TOKEN }} | helm registry login ghcr.io -u $ --password-stdin
+
+      - name: Save helm chart locally
+        run: |
+          helm package ./charts/flatris --version $CHART_VERSION
+
+      - name: Publish chart to gcr
+        run: |
+          helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_PATH }}

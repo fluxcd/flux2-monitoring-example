@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: flatris
+  namespace: flatris
+spec:
+  releaseName: flatris
+  interval: 15m
+  chart:
+    spec:
+      chart: flatris
+      sourceRef:
+        kind: HelmRepository
+        name: flatris
+        namespace: flatris

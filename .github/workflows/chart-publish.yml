@@ -5,30 +5,22 @@ on:
     branches: [ "helm-chart-update" ]
 
 env:
-  #HELM_VERSION_TO_INSTALL: 3.8.0 # version of HEL to install
   GCR_PATH: oci://ghcr.io/${{ github.repository_owner }}/flatris
-  CHART_VERSION: 0.1.0
+  CHART_VERSION: 0.2.0
 
 jobs:
   build:
     name: publish gcr
     runs-on: ubuntu-latest
-    environment: prod
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-
-#      - name: Install helm
-#        uses: Azure/setup-helm@v1
-        #with:
-          # Version of helm
-          #version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
 
       - name: Login to gcr using helm
         run: |
           echo ${{ secrets.GCR_TOKEN }} | helm registry login ghcr.io -u $ --password-stdin
 
-      - name: Save helm chart to local registry
+      - name: Save helm chart locally
         run: |
           helm package ./charts/flatris --version $CHART_VERSION
 

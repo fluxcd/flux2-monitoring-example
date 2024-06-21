@@ -13,6 +13,7 @@ spec:
         kind: HelmRepository
         name: flatris
         namespace: flatris
+      version: 0.2.1
   values:
     ingress:
       enabled: true

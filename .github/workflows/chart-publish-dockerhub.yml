@@ -1,0 +1,29 @@
+name: Publish Helm Chart to DockerHub
+
+on:
+  push:
+    branches: [ "helm-chart-update-docker" ]
+
+env:
+  REGISTRY_PATH: oci://registry-1.docker.io/${{ secret.DH_USER }}/flatris
+  CHART_VERSION: 0.1.0
+
+jobs:
+  build:
+    name: Publish DockerHub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub using Helm
+        run: |
+          echo ${{ secrets.DH_TOKEN }} | helm registry login registry-1.docker.io -u ${{ secret.DH_USER }} --password-stdin
+
+      - name: Save helm chart locally
+        run: |
+          helm package ./charts/flatris --version $CHART_VERSION
+
+      - name: Publish chart to DockerHub
+        run: |
+          helm push flatris-$CHART_VERSION.tgz ${{ env.REGISTRY_PATH }}

@@ -5,4 +5,4 @@ metadata:
   namespace: flatris
 spec:
   interval: 24h
-  url: oci://ghcr.io/netology-diploma/flatris/flatris
+  url: oci://registry-1.docker.io/fenixad/flatrisq

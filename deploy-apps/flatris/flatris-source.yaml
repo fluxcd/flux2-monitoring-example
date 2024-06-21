@@ -5,4 +5,6 @@ metadata:
   namespace: flatris
 spec:
   interval: 5m
-  url: oci://registry-1.docker.io/fenixad
+  url: oci://registry-1.docker.io/fenixad/flatris
+  secretRef:
+    name: dockerhub-auth

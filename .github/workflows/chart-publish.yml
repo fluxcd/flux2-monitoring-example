@@ -35,4 +35,3 @@ jobs:
       - name: Publish chart to gcr
         run: |
           helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_PATH }}
-          helm push flatris-$CHART_VERSION.tgz ${{ env.GCR_PATH }}:latest

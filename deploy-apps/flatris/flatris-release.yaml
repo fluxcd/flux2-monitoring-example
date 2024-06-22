@@ -9,11 +9,11 @@ spec:
   chart:
     spec:
       chart: flatris
-      version: 0.2.2
       sourceRef:
         kind: HelmRepository
         name: flatris
         namespace: flatris
+      version: 0.2.2
   values:
     ingress:
       enabled: true

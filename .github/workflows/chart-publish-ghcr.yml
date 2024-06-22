@@ -5,8 +5,8 @@ on:
     branches: [ "helm-chart-update" ]
 
 env:
-  GCR_PATH: oci://ghcr.io/${{ github.repository_owner }}/flatris
-  CHART_VERSION: 0.2.1
+  GCR_PATH: oci://ghcr.io/${{ github.repository_owner }}
+  CHART_VERSION: 0.2.2
 
 jobs:
   build:

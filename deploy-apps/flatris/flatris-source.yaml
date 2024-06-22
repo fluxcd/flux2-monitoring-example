@@ -5,6 +5,6 @@ metadata:
   namespace: flatris
 spec:
   interval: 5m
-  url: oci://registry-1.docker.io/fenixad
+  url: oci://ghcr.io/netology-diploma
   secretRef:
-    name: dockerhub-auth
+    name: ghcr-auth

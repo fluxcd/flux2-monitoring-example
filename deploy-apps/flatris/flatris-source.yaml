@@ -5,6 +5,6 @@ metadata:
   namespace: flatris
 spec:
   interval: 5m
-  url: oci://ghcr.io/netology-diploma
+  url: oci://ghcr.io/netology-diploma/flatris
   secretRef:
     name: ghcr-auth

@@ -6,5 +6,7 @@ metadata:
 spec:
   interval: 5m
   url: oci://ghcr.io/netology-diploma/flatris
+  ref:
+    tag: 0.2.2
   secretRef:
     name: ghcr-auth

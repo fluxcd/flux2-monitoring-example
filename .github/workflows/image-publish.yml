@@ -22,7 +22,7 @@ jobs:
 
       - name: Build, tag, and push image to Yandex Cloud Container Registry
         env:
-          CR_REGISTRY: crpm59021suhup36kglb
+          CR_REGISTRY: crpt7o7msj0kv25nq2l7
           CR_REPO: flatris
           IMAGE_TAG: ${{ github.sha }}
         uses: docker/build-push-action@v6

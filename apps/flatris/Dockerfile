@@ -1,8 +1,6 @@
 FROM node:12-alpine
 WORKDIR /usr/src/app
-COPY package.json yarn.lock ./
-RUN yarn --frozen-lockfile
 COPY . ./
-RUN yarn build
+RUN yarn --frozen-lockfile && yarn build
 EXPOSE 3000
 CMD yarn start

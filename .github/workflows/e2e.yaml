@@ -18,11 +18,11 @@ jobs:
         uses: helm/kind-action@v1.12.0
         with:
           cluster_name: flux
-          version: v0.20.0
+          version: v0.24.0
           # The versions below should target the newest Kubernetes version
           # Keep this up-to-date with https://endoflife.date/kubernetes
-          node_image: kindest/node:v1.28.0@sha256:9f3ff58f19dcf1a0611d11e8ac989fdb30a28f40f236f59f0bea31fb956ccf5c
-          kubectl_version: v1.28.0
+          node_image: kindest/node:v1.32.1@sha256:6afef2b7f69d627ea7bf27ee6696b6868d18e03bf98167c420df486da4662db6
+          kubectl_version: v1.32.1
       - name: Install Flux in Kubernetes Kind
         run: flux install
       - name: Setup cluster reconciliation

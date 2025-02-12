@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: promtail
+spec:
+  interval: 5m
+  timeout: 1m
+  dependsOn:
+    - name: kube-prometheus-stack
+  chart:
+    spec:
+      version: "6.x"
+      chart: promtail
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+      interval: 60m
+  values:
+    # https://grafana.com/docs/loki/latest/send-data/promtail/installation/
+    config:
+    # publish data to loki
+      clients:
+        - url: http://loki-gateway/loki/api/v1/push
+          tenant_id: 1

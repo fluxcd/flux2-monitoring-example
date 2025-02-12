@@ -3,7 +3,7 @@
 This repository is an example of how to make use of
 [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 and
-[loki-stack](https://github.com/grafana/helm-charts/tree/main/charts/loki-stack)
+[loki](https://github.com/grafana/loki/tree/main/production/helm/loki)
 to monitor Flux.
 
 Components:
@@ -72,13 +72,15 @@ After Flux has finished reconciling, you can list the pods in the monitoring nam
 ```console
 $ kubectl -n monitoring get po
 NAME                                                        READY
-kube-prometheus-stack-grafana-5c976ff4cf-xgmwm              3/3
-kube-prometheus-stack-kube-state-metrics-5dcf4c4697-jvlvh   1/1
-kube-prometheus-stack-operator-75f9fdcbf6-98zmh             1/1
-kube-prometheus-stack-prometheus-node-exporter-j4vhb        1/1
-loki-stack-0                                                1/1
-loki-stack-promtail-dcg64                                   1/1
+kube-prometheus-stack-grafana-58977b8976-8557b              3/3
+kube-prometheus-stack-kube-state-metrics-676657b78f-8w9pd   1/1
+kube-prometheus-stack-operator-7467d457b7-4qzks             1/1
+kube-prometheus-stack-prometheus-node-exporter-wcwds        1/1
+loki-0                                                      2/2
+loki-gateway-5669d46565-ldv9f                               1/1
+loki-minio-0                                                1/1
 prometheus-kube-prometheus-stack-prometheus-0               2/2
+promtail-tg5f8                                              1/1
 ```
 
 ### Accessing Grafana

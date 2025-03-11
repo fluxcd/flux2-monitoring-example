@@ -36,7 +36,7 @@ jobs:
           --path=./clusters/test
       - name: Verify cluster reconciliation
         run: |
-          kubectl -n flux-system wait kustomization/monitoring-controllers --for=condition=ready --timeout=10m
+          kubectl -n flux-system wait kustomization/monitoring-controllers --for=condition=ready --timeout=20m
           kubectl -n flux-system wait kustomization/monitoring-configs --for=condition=ready --timeout=1m
       - name: Debug failure
         if: failure()

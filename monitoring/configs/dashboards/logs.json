@@ -197,7 +197,7 @@
         "type": "textbox"
       },
       {
-        "allValue": "info|error",
+        "allValue": "debug|info|error",
         "current": {
           "selected": false,
           "text": "All",
@@ -215,6 +215,11 @@
           },
           {
             "selected": false,
+            "text": "debug",
+            "value": "debug"
+          },
+          {
+            "selected": false,
             "text": "info",
             "value": "info"
           },
@@ -224,7 +229,7 @@
             "value": "error"
           }
         ],
-        "query": "info,error",
+        "query": "debug,info,error",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"

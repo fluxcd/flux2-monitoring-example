@@ -1,6 +1,6 @@
 kube-state-metrics:
   # If only you want this deployment to collect Flux metrics, uncomment the below
-  # options to  strip all of the default kube-state-metrics from this deployment.
+  # options to strip all of the default kube-state-metrics from this deployment.
   # collectors: []
   # extraArgs:
   #   - --custom-resource-state-only=true

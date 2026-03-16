@@ -61,6 +61,48 @@ flux bootstrap github \
     --path=clusters/test
 ```
 
+### Induvidually install monitoring components
+
+Register flux git registry
+```shell
+flux create source git flux-monitoring \
+  --interval=30m \
+  --url=https://github.com/fluxcd/flux2-monitoring-example \
+  --branch=main
+```
+
+Deploy cofiguration kustomization
+```shell
+flux create kustomization config \
+  --interval=1h \
+  --prune \
+  --source=flux-monitoring \
+  --path="./monitoring/configs" \
+  --health-check-timeout=5m \
+```
+
+Deploy kube-prometheus-stack kustomization
+```shell
+flux create kustomization kube-prometheus-stack \
+  --interval=1h \
+  --prune \
+  --source=flux-monitoring \
+  --path="./monitoring/controllers/kube-prometheus-stack" \
+  --health-check-timeout=5m \
+```
+
+Deploy loki-stack kustomization
+```shell
+flux create kustomization loki-stack \
+  --interval=1h \
+  --prune \
+  --source=flux-monitoring \
+  --path="./monitoring/controllers/loki-stack" \
+  --health-check-timeout=5m \
+```
+
+### Verify instalation
+
 Wait for Flux to deploy the monitoring stack with:
 
 ```shell
